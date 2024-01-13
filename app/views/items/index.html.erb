@@ -20,5 +20,8 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New item", new_item_path %>
+<% if user_signed_in? %>
+  <%= link_to "New item", new_item_path %>
+<% else %>
+  <%= link_to  "New item", new_user_registration_path %>
+<% end %>
