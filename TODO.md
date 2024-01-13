@@ -1,8 +1,9 @@
-1. FUZZY SEARCH
-2. User auth - done
-3. Wish list
-4. Location
-5. Rent and return item system
-6. Rating system
-7. Payments
-8. Deliverys
+1. GET DOMAIN NAME - ideas: afito.cc (affitto == rent in italian)
+2. FUZZY SEARCH
+3. User auth - done
+4. Wish list
+5. Location
+6. Rent and return item system
+7. Rating system
+8. Payments
+9. Deliverys
