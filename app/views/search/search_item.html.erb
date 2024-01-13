@@ -1,3 +1,5 @@
+<%= link_to 'Back to items', items_path %>
+<!-- Show items -->
 <% if @get_items.length > 0 %>
     <% for item in @get_items do %>
         <%= render item %>

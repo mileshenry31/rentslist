@@ -1,10 +1,15 @@
 <p style="color: green"><%= notice %></p>
-
+<% if request.referer.present? && request.referer.include?('/search_item?') %>
+  <%= link_to "Back to search results", request.referer %>
+<% end %>
 <%= render @item %>
-
+<p>By: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
+<br>
+<br>
 <div>
-  <%= link_to "Edit this item", edit_item_path(@item) %> |
+  <% if @item.user_id == current_user.id %>
+    <%= link_to "Edit this item", edit_item_path(@item) %> |
+    <%= button_to "Destroy this item", @item, method: :delete %>
+  <% end %>
   <%= link_to "Back to items", items_path %>
-
-  <%= button_to "Destroy this item", @item, method: :delete %>
 </div>
