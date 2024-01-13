@@ -1,0 +1,8 @@
+<% if @get_items.length > 0 %>
+    <% for item in @get_items do %>
+        <%= render item %>
+        <%= link_to 'Show this item', item %>
+    <% end %>
+<% else %>
+    No items found with that name!
+<% end %>

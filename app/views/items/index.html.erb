@@ -1,7 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Items</h1>
-
+<%= form_with url: '/search_item', method: :get do |form| %>
+  <%= form.text_field :name %>
+  <%= form.submit "Search" %>
+<% end %>
 <div id="items">
   <% @items.each do |item| %>
     <%= render item %>
