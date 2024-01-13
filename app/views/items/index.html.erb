@@ -1,6 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Items</h1>
+<% if user_signed_in? %>
+  Welcome <%= current_user.email %>!
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+  <%= button_to "Sign up", new_user_registration_path, method: :get %>
+<% end %>
 <%= form_with url: '/search_item', method: :get do |form| %>
   <%= form.text_field :name %>
   <%= form.submit "Search" %>
