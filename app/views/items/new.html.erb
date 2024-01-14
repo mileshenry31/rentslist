@@ -11,8 +11,9 @@
     <!--<%= f.label "Description" %>-->
     <%= f.text_area :desc, placeholder: "Description" %>
   </div>
+    <% puts current_user.sorted_locations.collect { |location| [location.address, location.id] } %>
     <div class="field"> 
-      <%= f.select :location, @sorted_boys %>
+      <%= f.select :location_id, current_user.sorted_locations.collect { |location| [location.address, location.id] } %>
     </div>
   <div class="actions">
     <%= f.submit "Add" %>

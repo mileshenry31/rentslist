@@ -15,13 +15,6 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
-    @sorted_boys = []
-    @sorted_boys.push Location.find(current_user.default_location_id).address
-    current_user.locations.each do |location|
-      if !@sorted_boys.include? location.address
-        @sorted_boys.push location.address
-      end
-    end
   end
   # GET /items/1/edit
   def edit
@@ -29,9 +22,15 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @item = Item.new(item_params)
-    @item.user_id = current_user.id
-
+    #@item = Item.new(item_params)
+    puts "item" + params[:item].inspect
+    location = Location.find(params[:item][:location_id])
+    puts "location" + location.inspect
+    @item = location.items.new(item_params)
+    @item.user = current_user
+    #@item.user_id = current_user.id
+    #@item.location = current_user.locations.find_by(params[:location])
+    @item.save
     respond_to do |format|
       if @item.save
         format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
@@ -74,6 +73,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :desc)
+      params.require(:item).permit(:name, :desc, :location_id)
     end
 end
