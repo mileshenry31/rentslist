@@ -10,12 +10,19 @@ class ItemsController < ApplicationController
   # GET /items/1 or /items/1.json
   def show
   end
-
+  def locations_sorted
+  end
   # GET /items/new
   def new
     @item = Item.new
+    @sorted_boys = []
+    @sorted_boys.push Location.find(current_user.default_location_id).address
+    current_user.locations.each do |location|
+      if !@sorted_boys.include? location.address
+        @sorted_boys.push location.address
+      end
+    end
   end
-
   # GET /items/1/edit
   def edit
   end

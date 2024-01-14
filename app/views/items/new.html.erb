@@ -11,6 +11,9 @@
     <!--<%= f.label "Description" %>-->
     <%= f.text_area :desc, placeholder: "Description" %>
   </div>
+    <div class="field"> 
+      <%= f.select :location, @sorted_boys %>
+    </div>
   <div class="actions">
     <%= f.submit "Add" %>
   </div>
