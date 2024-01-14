@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items or /items.json
   def index
     @items = Item.all
+    # Geocoder.search(94558).first.data["lat"].to_f -- latitude
   end
 
   # GET /items/1 or /items/1.json

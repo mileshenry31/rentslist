@@ -4,11 +4,9 @@
 <% end %>
 <%= render @item %>
 <p>By: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
-<br>
-<br>
 <div>
   <% if @item.user_id == current_user.id %>
-    <%= link_to "Edit this item", edit_item_path(@item) %> |
+    <%= link_to "Edit this item", edit_item_path(@item) %>
     <%= button_to "Destroy this item", @item, method: :delete %>
   <% end %>
   <%= link_to "Back to items", items_path %>

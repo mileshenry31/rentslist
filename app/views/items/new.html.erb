@@ -1,6 +1,24 @@
 <h1>New item</h1>
 
-<%= render "form", item: @item %>
+<!--<%= render "form", item: @item %>-->
+
+<%= form_for @item do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %>
+    <%= f.text_area :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code, value: current_user.zip_code %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>
 
 <br>
 
