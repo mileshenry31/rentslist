@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-
+<%= link_to "Settings", settings_path %>
 <h1>Items</h1>
 <% if user_signed_in? %>
   Welcome <%= current_user.first_name %>!

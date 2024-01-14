@@ -1,0 +1,7 @@
+<%= link_to "Go back", :back %>
+<%= form_for @location do |f| %>
+    <%= f.text_field :address, placeholder: "Address" %>
+    <%= f.text_field :city, placeholder: "City" %>
+    <%= f.text_field :state, placeholder: "State" %>
+    <%= f.submit "Add location" %>
+<% end %>

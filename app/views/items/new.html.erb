@@ -4,16 +4,12 @@
 
 <%= form_for @item do |f| %>
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <!--<%= f.label :name %>-->
+    <%= f.text_field :name, placeholder: "Name" %>
   </div>
   <div class="field">
-    <%= f.label :desc %>
-    <%= f.text_area :desc %>
-  </div>
-  <div class="field">
-    <%= f.label :zip_code %>
-    <%= f.text_field :zip_code, value: current_user.zip_code %>
+    <!--<%= f.label "Description" %>-->
+    <%= f.text_area :desc, placeholder: "Description" %>
   </div>
   <div class="actions">
     <%= f.submit "Add" %>

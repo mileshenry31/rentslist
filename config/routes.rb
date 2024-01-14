@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get '/search_item', to: 'search#search_item'
+  get '/settings', to: 'settings#index', as: :settings
+  get '/locations/new', to: 'settings#new_location', as: :new_location
+  get '/location', to: 'settings#new_location', as: :locations
+  post '/location', to: 'settings#create_location'
+  post '/defaultlocation/set/:location_id', to: 'settings#make_default_location', as: :make_default_location
   root "items#index"
 end
