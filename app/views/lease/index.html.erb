@@ -11,3 +11,7 @@
         <%= lessee.lease.item.name %>
     <% end %>
 <% end %>
+
+<% if current_user.lessees.length + current_user.lessors.length == 0 %>
+    No leases yet!
+<% end %>

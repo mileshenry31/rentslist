@@ -7,3 +7,5 @@
 7. Rating system
 8. Payments
 9. Deliverys
+
+The deliveries can be peer-to-peer or from Ofito straight to the customer. Ex: If someone has a vacuum for rent then someone can rent straight from them but if not then ofito can rent one to them
