@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :items
   has_many :locations
+  has_many :leases
+  has_many :lessees
+  has_many :lessors
   def sorted_locations
     sorted_boys = []
     sorted_boys.push Location.find(self.default_location_id)

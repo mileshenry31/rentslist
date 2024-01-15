@@ -1,0 +1,8 @@
+Renting out: 
+<% current_user.lessors.each do |lessor| %>
+    <%= lessor.lease.item.name %>
+<% end %>
+Renting in:
+<% current_user.lessees.each do |lessee| %>
+    <%= lessee.lease.item.name %>
+<% end %>
