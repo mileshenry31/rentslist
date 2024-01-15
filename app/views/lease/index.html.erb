@@ -1,8 +1,13 @@
-Renting out: 
-<% current_user.lessors.each do |lessor| %>
-    <%= lessor.lease.item.name %>
+<%= link_to "Back home", root_path %>
+<% if current_user.lessors.length > 0 %>
+    Renting out:
+    <% current_user.lessors.each do |lessor| %>
+        <%= lessor.lease.item.name %>
+    <% end %>
 <% end %>
-Renting in:
-<% current_user.lessees.each do |lessee| %>
-    <%= lessee.lease.item.name %>
+<% if current_user.lessees.length > 0 %>
+    Renting in:
+    <% current_user.lessees.each do |lessee| %>
+        <%= lessee.lease.item.name %>
+    <% end %>
 <% end %>
