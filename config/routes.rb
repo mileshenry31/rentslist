@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/location', to: 'settings#create_location'
   post '/defaultlocation/set/:location_id', to: 'settings#make_default_location', as: :make_default_location
   get '/lease/new/:item_id', to: 'lease#new', as: :new_lease
-  post '/lease/new/:item_id', to: 'lease#create', as: :create_lease
+  post '/leases', to: 'lease#create', as: :create_lease
   get '/leases', to: 'lease#index', as: :leases
   delete '/location/:id/delete', to: 'settings#delete_location', as: :delete_location
   root "items#index"

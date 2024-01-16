@@ -5,12 +5,16 @@ class LeaseController < ApplicationController
     end
     def new
         @lease = Lease.new
+        @lease.item_id = params[:item_id]
+        @item = Item.find(params[:item_id])
+        @lease.save
     end
     def create
-        @lease = Lease.new
+        @lease = Lease.new(lease_params)
+        puts "try" + lease_params.inspect
         @lease.id = Lease.all.length
-        @item = Item.find(params[:item_id])
-        @lease.item_id = @item.id
+        @item = Item.find(@lease.item_id)
+        #@lease.item_id = @item.id
         @lease.save
         puts "hhehehe" + @lease.inspect
         @lessee = Lessee.new
@@ -24,6 +28,7 @@ class LeaseController < ApplicationController
         @lessor.save
         @lease.lessee_id = @lessee.id
         @lease.lessor_id = @lessor.id
+        @lease.price = @item.price
         puts "tjere" + @lessor.inspect
 
         respond_to do |format|
@@ -35,5 +40,9 @@ class LeaseController < ApplicationController
                 format.json { render json: @item.errors, status: :unprocessable_entity }
             end
         end
+    end
+    private
+    def lease_params
+        params.require(:lease).permit(:price, :duration_days, :all_at_once, :item_id)
     end
 end

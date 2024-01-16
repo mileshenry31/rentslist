@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_050300) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_16_052623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_050300) do
     t.integer "lessee_id"
     t.integer "lessor_id"
     t.integer "item_id"
+    t.decimal "price", precision: 8, scale: 2
+    t.integer "duration_days"
+    t.boolean "all_at_once"
   end
 
   create_table "lessees", force: :cascade do |t|

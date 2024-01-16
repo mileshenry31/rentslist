@@ -12,7 +12,7 @@ $<%= @item.price %> per day
     <%= button_to "Destroy this item", @item, method: :delete %>
   <% else %>
     <% if !@item.lease %>
-      <%= button_to "Rent this item", create_lease_path(item_id: @item.id), method: :post %>
+      <%= link_to "Rent this item", new_lease_path(item_id: @item.id) %>
     <% end %>
   <% end %>
   <%= link_to "Back to items", items_path %>

@@ -1,0 +1,9 @@
+<%= @item.name %>
+<%= form_for @lease do |f| %>
+    How long do you want to rent this out for?<br>
+    <%= f.text_field :duration_days %><br>
+    Check if you would like to pay all at once
+    <%= f.check_box :all_at_once %><br>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.submit 'Rent!' %>
+<% end %>
