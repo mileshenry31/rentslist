@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get '/lease/new/:item_id', to: 'lease#new', as: :new_lease
   post '/lease/new/:item_id', to: 'lease#create', as: :create_lease
   get '/leases', to: 'lease#index', as: :leases
+  delete '/location/:id/delete', to: 'settings#delete_location', as: :delete_location
   root "items#index"
 end

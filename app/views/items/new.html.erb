@@ -11,12 +11,17 @@
     <!--<%= f.label "Description" %>-->
     <%= f.text_area :desc, placeholder: "Description" %>
   </div>
-    <% puts current_user.sorted_locations.collect { |location| [location.address, location.id] } %>
+  <% if current_user.sorted_locations.length > 0 %>
     <div class="field"> 
       <%= f.select :location_id, current_user.sorted_locations.collect { |location| [location.address, location.id] } %>
     </div>
+  <% end %>
+  <%= link_to 'Add a location', new_location_path %>
+  <div class="field">
+    $<%= f.text_field :price %> per day
+  </div>
   <div class="actions">
-    <%= f.submit "Add" %>
+    <%= f.submit "Post to board" %>
   </div>
 <% end %>
 

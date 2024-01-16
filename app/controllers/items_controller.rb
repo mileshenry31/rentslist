@@ -28,6 +28,8 @@ class ItemsController < ApplicationController
     puts "location" + location.inspect
     @item = location.items.new(item_params)
     @item.user = current_user
+    #@item.price = params[:price]
+    #puts "hereeeee" + params[:price]
     #@item.user_id = current_user.id
     #@item.location = current_user.locations.find_by(params[:location])
     @item.save
@@ -73,6 +75,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :desc, :location_id)
+      params.require(:item).permit(:name, :desc, :location_id, :price)
     end
 end

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :leases
   has_many :lessees
   has_many :lessors
-  pay_customer
+  #pay_customer default_payment_processor: :braintree
   def sorted_locations
     sorted_boys = []
     sorted_boys.push Location.find(self.default_location_id)

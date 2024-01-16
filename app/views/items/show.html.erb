@@ -5,6 +5,7 @@
 <%= render @item %>
 <p>By: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
 <p><%= @item.location.address %></p>
+$<%= @item.price %> per day
 <div>
   <% if @item.user_id == current_user.id %>
     <%= link_to "Edit this item", edit_item_path(@item) %>

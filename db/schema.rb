@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_15_225509) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_16_050300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_225509) do
     t.string "zip_code"
     t.integer "location_id"
     t.integer "lease_id"
+    t.decimal "price", precision: 8, scale: 2
   end
 
   create_table "leases", force: :cascade do |t|

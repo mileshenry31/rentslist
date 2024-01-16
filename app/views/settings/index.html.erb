@@ -7,4 +7,5 @@
     <% else %>
         <h4>Default: <%= location.address %>, <%= location.city %>, <%= location.state %></h4>
     <% end %>
+    <%= button_to "Delete", delete_location_path(location.id), method: :delete %>
 <% end %>
