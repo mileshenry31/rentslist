@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "ofitoapp@gmail.com"
+  default from: "miles@ofito.cc"
+  default_url_options[:host] = "miles@ofito.cc"
   layout "mailer"
 end

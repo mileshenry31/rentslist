@@ -14,7 +14,19 @@ gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
 #gem "sqlite3", "~> 1.4"
 gem "pg"
+gem "pay", "~> 7.0"
 
+# To use Stripe, also include:
+gem "stripe", "~> 10.0"
+
+# To use Braintree + PayPal, also include:
+gem "braintree", "~> 4.7"
+
+# To use Paddle Billing or Paddle Classic, also include:
+gem "paddle", "~> 2.1"
+
+# To use Receipts gem for creating invoice and receipt PDFs, also include:
+gem "receipts", "~> 2.0"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
