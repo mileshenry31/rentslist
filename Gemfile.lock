@@ -260,7 +260,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
-  stripe
+  stripe (~> 10.6.0)
   turbo-rails
   tzinfo-data
   web-console

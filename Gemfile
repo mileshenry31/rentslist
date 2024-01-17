@@ -18,7 +18,7 @@ gem "pg"
 # To use Stripe, also include:
 
 # To use Braintree + PayPal, also include:
-gem "stripe"
+gem "stripe", "~> 10.6.0"
 gem "activemerchant"
 # To use Paddle Billing or Paddle Classic, also include:
 
