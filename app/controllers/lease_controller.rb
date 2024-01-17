@@ -5,8 +5,10 @@ class LeaseController < ApplicationController
     end
     def new
         ActiveMerchant::Billing::Base.mode = :test
-        @gateway = ActiveMerchant::Billing::StripeGateway.new(
-            login: 'sk_test_51OZQLlFvQnOmItLGRDZrCGEhOMDwmYO3G0qwcQqGikJOGP2iJQ1dqhgpjsyProGJmrbsVe0ibrK6lOK2VxXtnxMH00OmFSNi87',
+        @gateway = ActiveMerchant::Billing::BraintreeGateway.new(
+            merchant_id: 'jkqy9mm5frpn5p64',
+            public_key: 'zg52p9xsj2phrh9s',
+            private_key: 'a548ca83b74de4b0094f66bee7f61f67'
         )
         amount = 1000
         credit_card = ActiveMerchant::Billing::CreditCard.new(
