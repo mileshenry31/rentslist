@@ -49,6 +49,12 @@ GEM
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
+    activemerchant (1.133.0)
+      activesupport (>= 4.2)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
+      rexml (~> 3.2.5)
     activemodel (7.0.8)
       activesupport (= 7.0.8)
     activerecord (7.0.8)
@@ -72,9 +78,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.17.1)
       msgpack (~> 1.2)
-    braintree (4.18.0)
-      builder (>= 3.2.4)
-      rexml (>= 3.1.9)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -98,10 +101,6 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
-    faraday (2.9.0)
-      faraday-net_http (>= 2.0, < 3.2)
-    faraday-net_http (3.1.0)
-      net-http
     geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -132,8 +131,6 @@ GEM
     mini_mime (1.1.5)
     minitest (5.21.1)
     msgpack (1.7.2)
-    net-http (0.4.1)
-      uri
     net-imap (0.4.9.1)
       date
       net-protocol
@@ -147,10 +144,6 @@ GEM
     nokogiri (1.16.0-arm64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    paddle (2.1.3)
-      faraday (~> 2.0)
-    pay (7.1.1)
-      rails (>= 6.0.0)
     pdf-core (0.9.0)
     pg (1.5.4)
     prawn (2.4.0)
@@ -233,7 +226,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -253,16 +245,14 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  activemerchant
   bootsnap
-  braintree (~> 4.7)
   capybara
   debug
   devise
   geocoder
   importmap-rails
   jbuilder
-  paddle (~> 2.1)
-  pay (~> 7.0)
   pg
   puma (~> 5.0)
   rails (~> 7.0.8)
@@ -270,7 +260,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
-  stripe (~> 10.0)
+  stripe
   turbo-rails
   tzinfo-data
   web-console

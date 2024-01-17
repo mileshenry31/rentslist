@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get '/leases', to: 'lease#index', as: :leases
   delete '/location/:id/delete', to: 'settings#delete_location', as: :delete_location
   root "items#index"
+  resources :leases
 end

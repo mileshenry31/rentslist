@@ -18,8 +18,8 @@ gem "pg"
 # To use Stripe, also include:
 
 # To use Braintree + PayPal, also include:
-gem "braintree", "~> 4.7"
-
+gem "stripe"
+gem "activemerchant"
 # To use Paddle Billing or Paddle Classic, also include:
 
 # To use Receipts gem for creating invoice and receipt PDFs, also include:

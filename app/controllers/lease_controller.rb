@@ -4,6 +4,28 @@ class LeaseController < ApplicationController
         
     end
     def new
+        ActiveMerchant::Billing::Base.mode = :test
+        @gateway = ActiveMerchant::Billing::StripeGateway.new(
+            login: 'sk_test_51OZQLlFvQnOmItLGRDZrCGEhOMDwmYO3G0qwcQqGikJOGP2iJQ1dqhgpjsyProGJmrbsVe0ibrK6lOK2VxXtnxMH00OmFSNi87',
+        )
+        amount = 1000
+        credit_card = ActiveMerchant::Billing::CreditCard.new(
+                :first_name         => 'Bob',
+                :last_name          => 'Bobsen',
+                :number             => '4242424242424242',
+                :month              => '8',
+                :year               => Time.now.year+1,
+                :verification_value => '000')
+        if credit_card.validate.empty?
+            # Capture $10 from the credit card
+            response = @gateway.purchase(amount, credit_card)
+        
+            if response.success?
+                puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
+            else
+                raise StandardError, response.message
+            end
+        end
         @lease = Lease.new
         @lease.item_id = params[:item_id]
         @item = Item.find(params[:item_id])

@@ -1,0 +1,5 @@
+Rails.configuration.stripe = {
+  publishable_key: 'pk_test_51OZQLlFvQnOmItLGB3WrySQudbzMgQMdz0vxLfTDIKpDuTbgLQ3WZiNRakDR9RsDP9w0kCbeKYDJTzsaCqmDhDPc00lkAm9JDl',
+  secret_key: 'sk_test_51OZQLlFvQnOmItLGRDZrCGEhOMDwmYO3G0qwcQqGikJOGP2iJQ1dqhgpjsyProGJmrbsVe0ibrK6lOK2VxXtnxMH00OmFSNi87'
+}
+Stripe.api_key = Rails.configuration.stripe[:secret_key]
