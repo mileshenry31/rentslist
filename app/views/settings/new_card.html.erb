@@ -1,0 +1,10 @@
+<%= link_to "Go back", :back %>
+<%= form_for @card do |f| %>
+    <%= f.text_field :first_name, placeholder: 'First Name' %>
+    <%= f.text_field :last_name, placeholder: 'Last Name' %>
+    <%= f.text_field :number, placeholder: 'Card number' %>
+    <%= f.text_field :month, placeholder: 'Month' %>
+    <%= f.text_field :year, placeholder: 'Year' %>
+    <%= f.text_field :verification_value, placeholder: 'Verification' %>
+    <%= f.submit 'Add card' %>
+<% end %>

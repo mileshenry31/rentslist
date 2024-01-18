@@ -7,3 +7,13 @@
     <%= f.hidden_field :item_id, value: @item.id %>
     <%= f.submit 'Rent!' %>
 <% end %>
+<%= link_to "Go back", :back %>
+<%= form_for @card do |f| %>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :number %>
+    <%= f.text_field :month %>
+    <%= f.text_field :year %>
+    <%= f.text_field :verification_value %>
+    <%= f.submit 'Add card' %>
+<% end %>

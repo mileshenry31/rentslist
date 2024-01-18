@@ -9,3 +9,8 @@
     <% end %>
     <%= button_to "Delete", delete_location_path(location.id), method: :delete %>
 <% end %>
+<%= link_to 'Add a card', cards_path %>
+
+<% current_user.cards.each do |card| %>
+    <%= card.number %>
+<% end %>

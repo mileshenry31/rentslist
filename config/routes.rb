@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/locations/new', to: 'settings#new_location', as: :new_location
   get '/location', to: 'settings#new_location', as: :locations
   post '/location', to: 'settings#create_location'
+  get '/cards/new', to: 'settings#new_card', as: :cards
+  post '/cards/new', to: 'settings#create_card'
   post '/defaultlocation/set/:location_id', to: 'settings#make_default_location', as: :make_default_location
   get '/lease/new/:item_id', to: 'lease#new', as: :new_lease
   post '/leases', to: 'lease#create', as: :create_lease
