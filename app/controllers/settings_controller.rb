@@ -21,10 +21,16 @@ class SettingsController < ApplicationController
         if card_check.validate.empty?
             @card.save
         end
+        puts request.referer.inspect
         respond_to do |format|
             if @card.save
-                format.html { redirect_to settings_path , notice: "Card was successfully added." }
-                format.json { render :index, status: :created }
+                if params[:commit_type] == "from_lease"
+                    format.html { redirect_to request.referer, notice: "Card was successfully added." }
+                    format.json { render :index, status: :created }
+                else
+                    format.html { redirect_to settings_path , notice: "Card was successfully added." }
+                    format.json { render :index, status: :created }
+                end
             else
                 format.html { render :new_card, status: :unprocessable_entity }
                 format.json { render json: @location.errors, status: :unprocessable_entity }

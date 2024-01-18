@@ -1,19 +1,20 @@
 <%= @item.name %>
+<%= @item.price %>
 <%= form_for @lease do |f| %>
     How long do you want to rent this out for?<br>
     <%= f.text_field :duration_days %><br>
-    Check if you would like to pay all at once
-    <%= f.check_box :all_at_once %><br>
+    <!--Check if you would like to pay all at once
+    <%= f.check_box :all_at_once %><br>-->
     <%= f.hidden_field :item_id, value: @item.id %>
     <%= f.submit 'Rent!' %>
 <% end %>
-<%= link_to "Go back", :back %>
-<%= form_for @card do |f| %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name %>
-    <%= f.text_field :number %>
-    <%= f.text_field :month %>
-    <%= f.text_field :year %>
-    <%= f.text_field :verification_value %>
-    <%= f.submit 'Add card' %>
+<%= link_to "Go back", item_path(@item.id) %>
+<%= form_for Card.new do |f| %>
+    <%= f.text_field :first_name, placeholder: "First name" %>
+    <%= f.text_field :last_name, placeholder: "Last name" %>
+    <%= f.text_field :number, placeholder: "Card number" %>
+    <%= f.text_field :month, placeholder: "Month" %>
+    <%= f.text_field :year, placeholder: "Year" %>
+    <%= f.text_field :verification_value, placeholder: "CVC code" %>
+    <%= f.button 'Add card', type: :submit, formmethod: :post, action: '/cards/new', name: 'commit_type', value: 'from_lease' %>
 <% end %>

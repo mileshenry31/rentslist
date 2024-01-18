@@ -4,30 +4,6 @@ class LeaseController < ApplicationController
         
     end
     def new
-        ActiveMerchant::Billing::Base.mode = :test
-        @gateway = ActiveMerchant::Billing::BraintreeGateway.new(
-            merchant_id: 'jkqy9mm5frpn5p64',
-            public_key: 'zg52p9xsj2phrh9s',
-            private_key: 'a548ca83b74de4b0094f66bee7f61f67'
-        )
-        amount = 1000
-        credit_card = ActiveMerchant::Billing::CreditCard.new(
-                :first_name         => 'Bob',
-                :last_name          => 'Bobsen',
-                :number             => '4242424242424242',
-                :month              => '8',
-                :year               => Time.now.year+1,
-                :verification_value => '000')
-        if credit_card.validate.empty?
-            # Capture $10 from the credit card
-            response = @gateway.purchase(amount, credit_card)
-        
-            if response.success?
-                puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
-            else
-                raise StandardError, response.message
-            end
-        end
         @lease = Lease.new
         @lease.item_id = params[:item_id]
         @item = Item.find(params[:item_id])
@@ -53,7 +29,31 @@ class LeaseController < ApplicationController
         @lease.lessee_id = @lessee.id
         @lease.lessor_id = @lessor.id
         @lease.price = @item.price
-        puts "tjere" + @lessor.inspect
+        ActiveMerchant::Billing::Base.mode = :test
+        @gateway = ActiveMerchant::Billing::BraintreeGateway.new(
+            merchant_id: '6fhm8rz6hht589ff',
+            public_key: 'x5ymrw7394c78cn2',
+            private_key: '44f6c27d9041582fbecd1029ef72361a'
+        )
+        amount = @lease.item.price * 100 * @lease.duration_days
+        cc_card = current_user.cards.first
+        credit_card = ActiveMerchant::Billing::CreditCard.new(
+                :first_name         => cc_card.first_name,
+                :last_name          => cc_card.last_name,
+                :number             => cc_card.number,
+                :month              => cc_card.month,
+                :year               => cc_card.year,
+                :verification_value => cc_card.verification_value)
+        if credit_card.validate.empty?
+            # Capture $10 from the credit card
+            response = @gateway.purchase(amount, credit_card)
+        
+            if response.success?
+                puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
+            else
+                raise StandardError, response.message
+            end
+        end
 
         respond_to do |format|
             if @lease.save
