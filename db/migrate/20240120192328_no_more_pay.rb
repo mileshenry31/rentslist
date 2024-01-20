@@ -1,4 +1,4 @@
-class NoPay < ActiveRecord::Migration[7.0]
+class NoMorePay < ActiveRecord::Migration[7.0]
   def change
     drop_table :pay_payment_methods
     drop_table :pay_charges

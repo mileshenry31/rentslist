@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :leases
   has_many :lessees
   has_many :lessors
+  #self.set_payment_processor :stripe
   #pay_customer default_payment_processor: :braintree
     def sorted_locations
       sorted_boys = []

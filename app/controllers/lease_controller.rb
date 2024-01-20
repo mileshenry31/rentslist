@@ -10,6 +10,14 @@ class LeaseController < ApplicationController
         @lease.save
     end
     def create
+        #token = Stripe::Token.create({
+        #    card: {
+        #        number: '4242424242424242',
+        #        exp_month: '5',
+        #        exp_year: '2024',
+        #        cvc: '314',
+        #    },
+        #})
         @lease = Lease.new(lease_params)
         puts "try" + lease_params.inspect
         @lease.id = Lease.all.length
@@ -30,6 +38,17 @@ class LeaseController < ApplicationController
         @lease.lessor_id = @lessor.id
         @lease.price = @item.price
         puts "tjere" + @lessor.inspect
+        customer = Stripe::Customer.create({
+            email: current_user.email,
+            source: 'tok_visa',
+        })
+            
+        charge = Stripe::Charge.create({
+            :customer => customer.id,
+            :amount => (@lease.item.price * 100).to_i * @lease.duration_days,
+            :description => 'Description of your product',
+            :currency => 'usd'
+        })
 
         respond_to do |format|
             if @lease.save

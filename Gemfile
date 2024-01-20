@@ -18,7 +18,8 @@ gem "pg"
 # To use Stripe, also include:
 
 # To use Braintree + PayPal, also include:
-gem "braintree", "~> 4.7"
+gem "pay"
+gem "stripe"
 
 # To use Paddle Billing or Paddle Classic, also include:
 
